@@ -20,7 +20,11 @@ const SingleUserPage = async ({ params }) => {
         <form action={updateUser} className={styles.form}>
           <input type="hidden" name="id" value={user.id}/>
           <label>Username</label>
-          <input type="text" name="username" placeholder={user.username} />
+          <input type="text" name="username" placeholder={user.username} readOnly />
+
+          <label>Balance</label>
+          <input type="number" name="balance" placeholder={user.balance}  />
+
           <label>Email</label>
           <input type="email" name="email" placeholder={user.email} />
           <label>Password</label>
@@ -29,15 +33,15 @@ const SingleUserPage = async ({ params }) => {
           <input type="text" name="phone" placeholder={user.phone} />
           <label>Address</label>
           <textarea type="text" name="address" placeholder={user.address} />
-          <label>Is Admin?</label>
-          <select name="isAdmin" id="isAdmin">
-            <option value={true} selected={user.isAdmin}>Yes</option>
-            <option value={false} selected={!user.isAdmin}>No</option>
+          <label>Is Partner?</label>
+          <select name="isPartner" id="isPartner">
+            <option value={true} defaultValue={user.isAdmin}>Yes</option>
+            <option value={false} defaultValue={!user.isAdmin}>No</option>
           </select>
           <label>Is Active?</label>
           <select name="isActive" id="isActive">
-            <option value={true} selected={user.isActive}>Yes</option>
-            <option value={false} selected={!user.isActive}>No</option>
+            <option value={true} defaultValue={user.isActive}>Yes</option>
+            <option value={false} defaultValue={!user.isActive}>No</option>
           </select>
           <button>Update</button>
         </form>

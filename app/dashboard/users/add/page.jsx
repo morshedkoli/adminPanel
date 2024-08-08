@@ -6,6 +6,7 @@ const AddUserPage = () => {
     <div className={styles.container}>
       <form action={addUser} className={styles.form}>
         <input type="text" placeholder="username" name="username" required />
+        <input type="number" placeholder="Balance" name="balance" required />
         <input type="email" placeholder="email" name="email" required />
         <input
           type="password"
@@ -14,9 +15,9 @@ const AddUserPage = () => {
           required
         />
         <input type="phone" placeholder="phone" name="phone" />
-        <select name="isAdmin" id="isAdmin">
+        <select name="isPartner" id="isPartner">
           <option value={false}>
-            Is Admin?
+            Is Partner?
           </option>
           <option value={true}>Yes</option>
           <option value={false}>No</option>
@@ -31,7 +32,7 @@ const AddUserPage = () => {
         <textarea
           name="address"
           id="address"
-          rows="16"
+          rows="2"
           placeholder="Address"
         ></textarea>
         <button type="submit">Submit</button>

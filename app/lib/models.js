@@ -9,6 +9,11 @@ const userSchema = new mongoose.Schema(
       min: 3,
       max: 20,
     },
+
+    balance: {
+      type: Number,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -20,6 +25,10 @@ const userSchema = new mongoose.Schema(
     },
     img: {
       type: String,
+    },
+    isPartner: {
+      type: Boolean,
+      default: false,
     },
     isAdmin: {
       type: Boolean,
@@ -38,40 +47,6 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-// const productSchema = new mongoose.Schema(
-//   {
-//     title: {
-//       type: String,
-//       required: true,
-//       unique: true,
-//     },
-//     desc: {
-//       type: String,
-//       required: true,
-//     },
-//     price: {
-//       type: Number,
-//       required: true,
-//       min: 0,
-//     },
-//     stock: {
-//       type: Number,
-//       required: true,
-//       min: 0,
-//     },
-//     img: {
-//       type: String,
-//     },
-//     color: {
-//       type: String,
-//     },
-//     size: {
-//       type: String,
-//     },
-//   },
-//   { timestamps: true }
-// );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 // export const Product =

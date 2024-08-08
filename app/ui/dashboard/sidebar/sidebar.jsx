@@ -4,11 +4,7 @@ import styles from "./sidebar.module.css";
 import {
   MdDashboard,
   MdSupervisedUserCircle,
-  MdShoppingBag,
   MdAttachMoney,
-  MdWork,
-  MdAnalytics,
-  MdPeople,
   MdOutlineSettings,
   MdHelpCenter,
   MdLogout,
@@ -24,16 +20,26 @@ const menuItems = [
         path: "/dashboard",
         icon: <MdDashboard />,
       },
+
+      {
+        title: "Pending Request",
+        path: "/pending",
+        icon: <MdDashboard />,
+      },
       {
         title: "Users",
         path: "/dashboard/users",
         icon: <MdSupervisedUserCircle />,
+        for:"admin"
       },
       {
-        title: "Products",
-        path: "/dashboard/products",
-        icon: <MdShoppingBag />,
+        title: "Send Money",
+        path: "/dashboard/send",
+        icon: <MdSupervisedUserCircle />,
+        
       },
+     
+     
       {
         title: "Transactions",
         path: "/dashboard/transactions",
@@ -41,26 +47,26 @@ const menuItems = [
       },
     ],
   },
-  {
-    title: "Analytics",
-    list: [
-      {
-        title: "Revenue",
-        path: "/dashboard/revenue",
-        icon: <MdWork />,
-      },
-      {
-        title: "Reports",
-        path: "/dashboard/reports",
-        icon: <MdAnalytics />,
-      },
-      {
-        title: "Teams",
-        path: "/dashboard/teams",
-        icon: <MdPeople />,
-      },
-    ],
-  },
+  // {
+  //   title: "Analytics",
+  //   list: [
+  //     {
+  //       title: "Revenue",
+  //       path: "/dashboard/revenue",
+  //       icon: <MdWork />,
+  //     },
+  //     {
+  //       title: "Reports",
+  //       path: "/dashboard/reports",
+  //       icon: <MdAnalytics />,
+  //     },
+  //     {
+  //       title: "Teams",
+  //       path: "/dashboard/teams",
+  //       icon: <MdPeople />,
+  //     },
+  //   ],
+  // },
   {
     title: "User",
     list: [

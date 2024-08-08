@@ -1,7 +1,13 @@
+import Link from "next/link"
+
 // TODO
 const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <div >
+      
+    <Link href="/login">Login</Link>
+
+    </div>
   )
 }
 
