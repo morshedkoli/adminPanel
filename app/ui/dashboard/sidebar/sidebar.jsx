@@ -10,6 +10,7 @@ import {
   MdLogout,
 } from "react-icons/md";
 import { auth, signOut } from "@/app/auth";
+import { fetchUser } from "@/app/lib/data";
 
 const menuItems = [
   {
@@ -86,6 +87,9 @@ const menuItems = [
 
 const Sidebar = async () => {
   const { user } = await auth();
+  console.log('user', user)
+  const { balance } = await fetchUser(user.id);
+
   return (
     <div className={styles.container}>
       <div className={styles.user}>
@@ -99,6 +103,7 @@ const Sidebar = async () => {
         <div className={styles.userDetail}>
           <span className={styles.username}>{user.username}</span>
           <span className={styles.userTitle}>Administrator</span>
+          <span className={styles.userDetail}>Balance: {balance}</span>
         </div>
       </div>
       <ul className={styles.list}>

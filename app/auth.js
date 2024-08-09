@@ -50,6 +50,7 @@ export const { signIn, signOut, auth } = NextAuth({
         token.img = user.img;
         token.isAdmin = user.isAdmin;
         token.isPartner = user.isPartner;
+        token.id = user._id;
       }
       return token;
     },
@@ -59,6 +60,7 @@ export const { signIn, signOut, auth } = NextAuth({
         session.user.img = token.img;
         session.user.isAdmin = token.isAdmin;
         session.user.isPartner = token.isPartner;
+        session.user.id = token.id;
       }
       return session;
     },

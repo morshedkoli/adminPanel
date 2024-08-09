@@ -49,5 +49,43 @@ const userSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+const requestSchema = new mongoose.Schema(
+  {
+    userid: {
+      type: String,
+    },
+
+    number: {
+      type: Number,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+
+    service: {
+      type: String,
+      default: false,
+    },
+    comments: {
+      type: String,
+      default: false,
+    },
+    oldBalance: {
+      type: Number,
+      required: true,
+    },
+    newBalance: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+export const Request =
+  mongoose.models.Request || mongoose.model("Request", requestSchema);
 // export const Product =
 //   mongoose.models.Product || mongoose.model("Product", productSchema);

@@ -5,7 +5,7 @@ import { User } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
-import { signIn } from "../auth";
+import { auth, signIn } from "../auth";
 import { fetchUser } from "@/app/lib/data";
 
 export const addUser = async (formData) => {
@@ -47,6 +47,38 @@ export const addUser = async (formData) => {
 
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
+};
+
+export const newRequest = async (formData) => {
+  const { number, amount, service, comments } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    const { user } = await auth();
+    const { balance } = await fetchUser(user.id);
+    if (balance < amount) {
+      throw new Error("Your Blance is low!");
+    }
+
+    const newBalance = parseInt(balance) - parseInt(amount);
+    const newRequest = new Request({
+      userid: user.id,
+      number,
+      amount,
+      service,
+      comments,
+      oldBalance: balance,
+      newBalance: newBalance,
+    });
+
+    await newRequest.save();
+  } catch (err) {
+    console.log("error", err);
+    throw new Error("Failed to create Request!");
+  }
+
+  revalidatePath("/dashboard/send");
+  redirect("/dashboard/send");
 };
 
 export const updateUser = async (formData) => {
